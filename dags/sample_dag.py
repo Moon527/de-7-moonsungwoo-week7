@@ -2,7 +2,7 @@ import pendulum
 
 from airflow import DAG
 from airflow.operators.empty import EmptyOperator
-from airflow.operators.python import PythonOperato
+from airflow.operators.python import PythonOperator
 
 
 def first_message():
