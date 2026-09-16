@@ -1,0 +1,4 @@
+# Only dependency manifests are required to build this image.
+**
+!Dockerfile
+!requirements.txt
