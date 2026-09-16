@@ -1,7 +1,7 @@
 # Credentials and local configuration. Never put secrets in tracked code.
 .aws/
 .ssh/
-.env
+# The assignment .env contains only non-secret settings and is tracked.
 .env.*
 !.env.example
 credentials
