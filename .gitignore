@@ -1,0 +1,33 @@
+# Credentials and local configuration. Never put secrets in tracked code.
+.aws/
+.ssh/
+.env
+.env.*
+!.env.example
+credentials
+*.pem
+*.key
+id_ed25519*
+id_rsa*
+
+# Downloaded data, generated output, and runtime files.
+data/
+logs/
+output/
+*.csv
+*.parquet
+*.zip
+*.egg
+*.pdf
+
+# Local Python environments and caches.
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Operating system metadata.
+.DS_Store
+Thumbs.db
