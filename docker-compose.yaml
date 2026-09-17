@@ -155,6 +155,8 @@ services:
       - ${AIRFLOW_PROJ_DIR:-.}/config:/opt/airflow/config
       - ${AIRFLOW_PROJ_DIR:-.}/plugins:/opt/airflow/plugins
       - ${AIRFLOW_PROJ_DIR:-.}/data:/opt/airflow/data
+      - ${AIRFLOW_PROJ_DIR:-.}/jobs/q2:/opt/airflow/q2:ro
+      - ${AIRFLOW_PROJ_DIR:-.}/../Q2/output:/opt/airflow/q2/output
       # Only the task worker receives the existing credentials, read-only.
       - ${HOME}/.aws/credentials:/home/airflow/.aws/credentials:ro
     healthcheck:
