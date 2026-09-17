@@ -33,6 +33,7 @@ def apply_udf(input_path, output_path):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--input", default="/opt/airflow/data/data.csv")
-    parser.add_argument("--output", default="/opt/airflow/q2/output")
+    # Spark overwrite must target a child directory, not the bind-mount root.
+    parser.add_argument("--output", default="/opt/airflow/q2/output/age_groups")
     args = parser.parse_args()
     apply_udf(args.input, args.output)
