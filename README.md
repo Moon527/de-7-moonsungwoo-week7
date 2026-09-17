@@ -8,7 +8,7 @@ This repository contains the week 7 assignment project.
 
 ## 실습 환경
 
-Windows의 Ubuntu WSL2와 Docker Desktop에서 Airflow와 Spark 실습을 진행한다.
+Windows의 Ubuntu WSL2와 Docker Desktop을 사용한다. Q4는 Spark Standalone 클러스터에서, Q2와 Q9는 Airflow worker 내부의 Spark local 모드에서 실행한다.
 
 - Airflow: 2.10.5, CeleryExecutor, PostgreSQL 13, Redis 7.2.
 - Custom image: moonsungwoo-airflow:2.10.5, Python 3.8, JDK 17.
@@ -18,7 +18,7 @@ Windows의 Ubuntu WSL2와 Docker Desktop에서 Airflow와 Spark 실습을 진행
 
 ## 회고
 
-작업 성공 여부를 로그와 실제 출력 데이터로 확인하고 문항별 실행 증빙을 보관한다.
+UDF 결과 저장 시 Spark overwrite가 Docker 마운트 루트를 삭제하려다 실패했다. 출력 대상을 마운트의 하위 디렉토리로 변경하고 첫 저장과 재저장을 검증했다.
 
 ## 데이터와 보안
 
