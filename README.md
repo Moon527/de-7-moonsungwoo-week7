@@ -8,7 +8,7 @@ This repository contains the week 7 assignment project.
 
 ## 실습 환경
 
-Windows의 Ubuntu WSL2와 Docker Desktop에서 Airflow와 Spark 실습을 진행한다.
+Windows의 Ubuntu WSL2와 Docker Desktop을 사용하며 모든 Airflow 서비스는 공통 커스텀 이미지를 공유한다. 웹 UI 포트는 localhost에만 바인딩한다.
 
 - Airflow: 2.10.5, CeleryExecutor, PostgreSQL 13, Redis 7.2.
 - Custom image: moonsungwoo-airflow:2.10.5, Python 3.8, JDK 17.
@@ -18,7 +18,7 @@ Windows의 Ubuntu WSL2와 Docker Desktop에서 Airflow와 Spark 실습을 진행
 
 ## 회고
 
-작업 성공 여부를 로그와 실제 출력 데이터로 확인하고 문항별 실행 증빙을 보관한다.
+성공 표시만 보지 않고 CSV 레코드 수와 실제 Parquet 집계값을 검산했다. 캡처에 실행 날짜와 hostname을 포함하고 문항별 Git 기록을 보관하여 결과를 추적할 수 있도록 했다.
 
 ## 데이터와 보안
 
