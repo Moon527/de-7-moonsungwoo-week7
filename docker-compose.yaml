@@ -149,6 +149,14 @@ services:
   airflow-worker:
     <<: *airflow-common
     command: celery worker
+    volumes:
+      - ${AIRFLOW_PROJ_DIR:-.}/dags:/opt/airflow/dags
+      - ${AIRFLOW_PROJ_DIR:-.}/logs:/opt/airflow/logs
+      - ${AIRFLOW_PROJ_DIR:-.}/config:/opt/airflow/config
+      - ${AIRFLOW_PROJ_DIR:-.}/plugins:/opt/airflow/plugins
+      - ${AIRFLOW_PROJ_DIR:-.}/data:/opt/airflow/data
+      # Only the task worker receives the existing credentials, read-only.
+      - ${HOME}/.aws/credentials:/home/airflow/.aws/credentials:ro
     healthcheck:
       # yamllint disable rule:line-length
       test:
@@ -163,6 +171,9 @@ services:
       # Required to handle warm shutdown of the celery workers properly
       # See https://airflow.apache.org/docs/docker-stack/entrypoint.html#signal-propagation
       DUMB_INIT_SETSID: "0"
+      AWS_PROFILE: week7
+      AWS_DEFAULT_REGION: ap-northeast-2
+      AWS_SHARED_CREDENTIALS_FILE: /home/airflow/.aws/credentials
     restart: always
     depends_on:
       <<: *airflow-common-depends-on
