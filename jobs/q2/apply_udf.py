@@ -17,8 +17,8 @@ def apply_udf(input_path, output_path):
     try:
         schema = T.StructType([T.StructField("name", T.StringType()), T.StructField("age", T.IntegerType())])
         frame = spark.read.schema(schema).option("header", True).option("mode", "FAILFAST").csv(input_path)
-        spark.udf.register("age_group", age_group, T.StringType())
-        result = frame.withColumn("age_group", F.call_udf("age_group", F.col("age")))
+        group_udf = F.udf(age_group, T.StringType())
+        result = frame.withColumn("age_group", group_udf(F.col("age")))
         result.orderBy("name").coalesce(1).write.mode("overwrite").option("header", True).csv(output_path)
         saved = spark.read.option("header", True).csv(output_path)
         print("Q2 UDF OUTPUT: " + output_path, flush=True)
