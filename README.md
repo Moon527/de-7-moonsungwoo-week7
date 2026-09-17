@@ -8,7 +8,7 @@ This repository contains the week 7 assignment project.
 
 ## 실습 환경
 
-Windows의 Ubuntu WSL2와 Docker Desktop을 사용하며 모든 Airflow 서비스는 공통 커스텀 이미지를 공유한다. 웹 UI 포트는 localhost에만 바인딩한다.
+Windows의 Ubuntu WSL2와 Docker Desktop을 사용한다. 모든 Airflow 서비스는 공통 커스텀 이미지를 공유하고 웹 UI 포트는 localhost에만 바인딩한다. Q4는 Spark Standalone 클러스터에서, Q2와 Q9는 Airflow worker 내부의 Spark local 모드에서 실행한다.
 
 - Airflow: 2.10.5, CeleryExecutor, PostgreSQL 13, Redis 7.2.
 - Custom image: moonsungwoo-airflow:2.10.5, Python 3.8, JDK 17.
@@ -18,7 +18,7 @@ Windows의 Ubuntu WSL2와 Docker Desktop을 사용하며 모든 Airflow 서비�
 
 ## 회고
 
-성공 표시만 보지 않고 CSV 레코드 수와 실제 Parquet 집계값을 검산했다. 캡처에 실행 날짜와 hostname을 포함하고 문항별 Git 기록을 보관하여 결과를 추적할 수 있도록 했다.
+UDF 결과 저장 시 Spark overwrite가 Docker 마운트 루트를 삭제하려다 실패했다. 출력 대상을 하위 디렉토리로 변경하고 첫 저장과 재저장을 검증했다. 또한 성공 표시만 보지 않고 CSV 레코드 수와 실제 Parquet 집계값을 검산했다. 캡처에 실행 날짜와 hostname을 포함하고 문항별 Git 기록을 보관하여 결과를 추적할 수 있도록 했다.
 
 ## 데이터와 보안
 
